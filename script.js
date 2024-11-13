@@ -4,6 +4,7 @@ const emojisHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜
 const emojisVeryHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾', '👽', '👽', '👻', '👻', '☠', '☠', '😈', '😈', '😱', '😱', '🤓', '🤓', '🎃', '🎃', '🎊', '🎊', '🧨', '🧨', '🎇', '🎇', '🎆', '🎆', '🎈', '🎈', '🎄', '🎄', '🎎', '🎎', '🎁', '🎁', '🎪', '🎪', '🎭', '🎭', '🎢', '🎢', '🎨', '🎨', '🎡', '🎡', '🎠', '🎠', '✨', '✨'];
 const resetBtn = document.getElementById('reset-btn');
 const gameDifficulty = document.getElementById('game-difficulty');
+const dialogGameDifficulty = document.getElementById('dialog-game-difficulty');
 const gameCards = document.getElementById('game-cards');
 const winningFeedback = document.getElementById('winning-feedback');
 const dialogResetBtn = document.getElementById('dialog-reset-btn');
@@ -14,21 +15,25 @@ const showFeedback = () => {
     switch (gameDifficulty.value) {
         case 'easy':
             if(document.querySelectorAll('.match').length === emojisEasy.length) {
+                dialogGameDifficulty.value = gameDifficulty.value;
                 winningFeedback.showModal();
             }
             break;
         case 'medium':
             if(document.querySelectorAll('.match').length === emojisMedium.length) {
+                dialogGameDifficulty.value = gameDifficulty.value;
                 winningFeedback.showModal();
             }
             break;
         case 'hard':
             if(document.querySelectorAll('.match').length === emojisHard.length) {
+                dialogGameDifficulty.value = gameDifficulty.value;
                 winningFeedback.showModal();
             }
             break;
         case 'very-hard':
             if(document.querySelectorAll('.match').length === emojisVeryHard.length) {
+                dialogGameDifficulty.value = gameDifficulty.value;
                 winningFeedback.showModal();
             }
             break;
@@ -88,6 +93,7 @@ const resetGame = () => {
 
 dialogResetBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    gameDifficulty.value = dialogGameDifficulty.value;
     winningFeedback.close();
     resetGame()
 })

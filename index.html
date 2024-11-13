@@ -25,6 +25,12 @@
     <dialog id="winning-feedback">
         <form method="dialog">
             <p class="winning-reset-message">You won, congratulations! Reset?</p>
+            <select name="difficulty" id="dialog-game-difficulty" class="game__difficulty">
+                <option value="easy" selected>Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+                <option value="very-hard">Very Hard</option>
+            </select>
             <div class="reset-cancel-dialog">
                 <button id="dialog-reset-btn" type="button" class="dialog-btn">Reset</button>
                 <button id="dialog-cancel-btn" type="button" class="dialog-btn">Cancel</button>
