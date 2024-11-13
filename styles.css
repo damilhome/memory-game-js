@@ -1,0 +1,74 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #3B3B4F;
+    --game-bg-color: #DFDFE2;
+    --dark-text-color: #0A0A23;
+    --card-front-color: #fff;
+    --card-back-color: #0A0A23;
+}
+
+body {
+    background-color: var(--bg-color);
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.game__container {
+    background-color: var(--game-bg-color);
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.game__cards {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game__card {
+    width: 100px;
+    height: 100px;
+    background-color: var(--card-front-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    position: relative;
+}
+
+.game__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-color);
+    transition: 0.25;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.game__card.open {
+    transform: rotateY(0deg);
+}
+
+.open::after {
+    transform: rotateY(180deg);
+}
