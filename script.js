@@ -1,10 +1,14 @@
 const emojisEasy = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳'];
-const emojisMedium = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾', '👽', '👽', '👻', '👻', '☠', '☠', '😈', '😈'];
-const emojisHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾', '👽', '👽', '👻', '👻', '☠', '☠', '😈', '😈'];
+const emojisMedium = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾'];
+const emojisHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾', '👽', '👽', '👻', '👻', '☠', '☠', '😈', '😈', '🤐', '🤐', '😴', '😴', '🙃', '🙃', '😱', '😱', '🤫', '🤫', '🤓', '🤓'];
+const emojisVeryHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '😜', '🥶', '🥶', '🤑', '🤑', '🤪', '🤪', '😵', '😵', '🥴', '🥴', '😡', '😡', '😇', '😇', '🥳', '🥳', '🤠', '🤠', '🤡', '🤡', '🤥', '🤥', '💀', '💀', '👺', '👺', '👹', '👹', '🤖', '🤖', '👾', '👾', '👽', '👽', '👻', '👻', '☠', '☠', '😈', '😈', '😱', '😱', '🤓', '🤓', '🎃', '🎃', '🎊', '🎊', '🧨', '🧨', '🎇', '🎇', '🎆', '🎆', '🎈', '🎈', '🎄', '🎄', '🎎', '🎎', '🎁', '🎁', '🎪', '🎪', '🎭', '🎭', '🎢', '🎢', '🎨', '🎨', '🎡', '🎡', '🎠', '🎠', '✨', '✨'];
 const resetBtn = document.getElementById('reset-btn');
 const gameDifficulty = document.getElementById('game-difficulty');
 const gameCards = document.getElementById('game-cards');
-const easy = 24;
+const easy = emojisEasy.length;
+const medium = emojisMedium.length;
+const hard = emojisHard.length;
+const veryHard = emojisVeryHard.length;
 let turnedCards = [];
 
 const checkMatch = () => {
@@ -17,6 +21,10 @@ const checkMatch = () => {
     }
 
     turnedCards = [];
+
+    if(document.querySelectorAll('.match').length = emojisEasy.length) {
+        
+    }
 }
 
 const turnCard = (e) => {
@@ -29,7 +37,7 @@ const turnCard = (e) => {
     }
 }
 
-window.onload = () => {
+const resetGame = () => {
     if(gameDifficulty.value === 'easy') {
         const shuffledEmojis = emojisEasy.sort(() => Math.random() > 0.5 ? 2 : -1)
         for(let i = 0; i < easy; i++) {
@@ -39,5 +47,34 @@ window.onload = () => {
             card.onclick = turnCard
             gameCards.appendChild(card);
         }
+    } else if(gameDifficulty.value === 'medium') {
+        const shuffledEmojis = emojisMedium.sort(() => Math.random() > 0.5 ? 2 : -1)
+        for(let i = 0; i < medium; i++) {
+            const card = document.createElement('div');
+            card.className = 'game__card';
+            card.textContent = shuffledEmojis[i];
+            card.onclick = turnCard
+            gameCards.appendChild(card);
+        }
+    } else if(gameDifficulty.value === 'hard') {
+        const shuffledEmojis = emojisHard.sort(() => Math.random() > 0.5 ? 2 : -1)
+        for(let i = 0; i < hard; i++) {
+            const card = document.createElement('div');
+            card.className = 'game__card';
+            card.textContent = shuffledEmojis[i];
+            card.onclick = turnCard
+            gameCards.appendChild(card);
+        }
+    } else if(gameDifficulty.value == 'very-hard') {
+        const shuffledEmojis = emojisVeryHard.sort(() => Math.random() > 0.5 ? 2 : -1)
+        for(let i = 0; i < veryHard; i++) {
+            const card = document.createElement('div');
+            card.className = 'game__card';
+            card.textContent = shuffledEmojis[i];
+            card.onclick = turnCard
+            gameCards.appendChild(card);
+        }
     }
 }
+
+window.onload = resetGame
