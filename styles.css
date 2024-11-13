@@ -28,6 +28,7 @@ body {
 .game__container {
     background-color: var(--game-bg-color);
     width: 100%;
+    max-width: 1200px;
     text-align: center;
     padding: 20px;
 }
@@ -36,22 +37,33 @@ body {
     text-transform: uppercase;
 }
 
+.game__difficulty {
+    width: 150px;
+    height: 30px;
+    font-size: 1rem;
+}
+
+.game__reset-btn {
+    padding: 6px 30px;
+}
+
 .game__cards {
     margin-top: 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
 }
 
 .game__card {
     width: 100px;
     height: 100px;
+    font-size: 4rem;
     background-color: var(--card-front-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
     position: relative;
 }
 
@@ -71,4 +83,31 @@ body {
 
 .open::after {
     transform: rotateY(180deg);
+}
+
+@media screen and (min-width: 576px){
+    body {
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .game__card {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .game__card {
+        width: 130px;
+        height: 130px;
+        font-size: 4.5rem;
+    }
 }

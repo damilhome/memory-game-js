@@ -9,12 +9,15 @@
 <body>
     <main class="game__container">
         <h1 class="title">Memory Game</h1>
-        <select name="difficulty" id="game-difficulty">
-            <option value="easy" selected>Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="very-hard">Very Hard</option>
-        </select>
+        <div class="game__controls">
+            <select name="difficulty" id="game-difficulty" class="game__difficulty">
+                <option value="easy" selected>Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+                <option value="very-hard">Very Hard</option>
+            </select>
+            <button type="button" class="game__reset-btn" id="reset-btn">RESET</button>
+        </div>
         <div class="game__cards">
             <div class="game__card open">😀</div>
             <div class="game__card">😀</div>
