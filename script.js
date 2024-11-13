@@ -5,7 +5,35 @@ const emojisVeryHard = ['🤯', '🤯','😎', '😎', '🤩', '🤩', '😜', '
 const resetBtn = document.getElementById('reset-btn');
 const gameDifficulty = document.getElementById('game-difficulty');
 const gameCards = document.getElementById('game-cards');
+const winningFeedback = document.getElementById('winning-feedback');
+const dialogResetBtn = document.getElementById('dialog-reset-btn');
+const dialogCancelBtn = document.getElementById('dialog-cancel-btn');
 let turnedCards = [];
+
+const showFeedback = () => {
+    switch (gameDifficulty.value) {
+        case 'easy':
+            if(document.querySelectorAll('.match').length === emojisEasy.length) {
+                winningFeedback.showModal();
+            }
+            break;
+        case 'medium':
+            if(document.querySelectorAll('.match').length === emojisMedium.length) {
+                winningFeedback.showModal();
+            }
+            break;
+        case 'hard':
+            if(document.querySelectorAll('.match').length === emojisHard.length) {
+                winningFeedback.showModal();
+            }
+            break;
+        case 'very-hard':
+            if(document.querySelectorAll('.match').length === emojisVeryHard.length) {
+                winningFeedback.showModal();
+            }
+            break;
+    }
+}
 
 const checkMatch = () => {
     if(turnedCards[0].textContent === turnedCards[1].textContent) {
@@ -18,9 +46,7 @@ const checkMatch = () => {
 
     turnedCards = [];
 
-    if(document.querySelectorAll('.match').length = emojisEasy.length) {
-        
-    }
+    showFeedback();
 }
 
 const turnCard = (e) => {
@@ -44,6 +70,7 @@ const createCards = (shuffledEmojis) => {
 }
 
 const resetGame = () => {
+    gameCards.innerHTML = '';
     if(gameDifficulty.value === 'easy') {
         const shuffledEmojis = emojisEasy.sort(() => Math.random() > 0.5 ? 2 : -1);
         createCards(shuffledEmojis);
@@ -58,5 +85,13 @@ const resetGame = () => {
         createCards(shuffledEmojis);
     }
 }
+
+dialogResetBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    winningFeedback.close();
+    resetGame()
+})
+
+dialogCancelBtn.addEventListener('click', () => winningFeedback.close())
 
 window.onload = resetGame;

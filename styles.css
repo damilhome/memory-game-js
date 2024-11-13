@@ -28,7 +28,7 @@ body {
 .game__container {
     background-color: var(--game-bg-color);
     width: 100%;
-    max-width: 1400px;
+    max-width: 1450px;
     text-align: center;
     padding: 20px;
 }
@@ -43,7 +43,7 @@ body {
     font-size: 1rem;
 }
 
-.game__reset-btn {
+.game__reset-btn, .dialog-btn {
     padding: 6px 30px;
 }
 
@@ -85,6 +85,27 @@ body {
 
 .open::after {
     transform: rotateY(180deg);
+}
+
+#winning-feedback {
+    padding: 10px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.winning-reset-message {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.reset-cancel-dialog {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
 }
 
 @media screen and (min-width: 576px){
